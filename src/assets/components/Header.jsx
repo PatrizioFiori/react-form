@@ -2,7 +2,9 @@
 
 const Header = () => {
     return (
-        <div>Header</div>
+        <div className='bg-dark-subtle text-center py-3'>
+            <h1>Blog</h1>
+        </div>
     )
 }
 
