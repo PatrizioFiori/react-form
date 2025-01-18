@@ -10,10 +10,19 @@ const Main = () => {
 
     const handlerSubmit = (event) => {
         event.preventDefault()
-        const newTitleMaiuscolo = newTitle.charAt(0).toUpperCase() + newTitle.slice(1)
-        setTitle([newTitleMaiuscolo, ...title])
-
+        //const newTitleMaiuscolo = newTitle.charAt(0).toUpperCase() + newTitle.slice(1)
+        setTitle([newTitle, ...title])
+        //setNewTitle("")
+        // aggiungere un blocco quando l'utente inserisce un elemento vuoto nel text
     }
+
+    // const handlerRemove = (event) => {
+    //     event.preventDefault()
+    //     const newTitle = title.filter(articolo => articolo !== articolo)
+    //     setNewTitle()
+    // }
+
+
     return (
         <div className="container my-5 border">
             <form action="#" onSubmit={handlerSubmit}>
@@ -39,7 +48,16 @@ const Main = () => {
                 <ul>
                     {title.map((articolo, index) => {
                         return (
-                            <li key={index} className="w-75 py-3"><h4>{articolo} </h4></li>
+                            <div >
+                                <div className="d-flex ">
+                                    <li key={index} className="w-75 py-3"><h4>{articolo} </h4></li>
+                                    <div className="w-25">
+                                        <button key={index} className="rounded mb-1 mx-1">Delete</button>
+                                        <button key={index} className="rounded mx-1">Modify</button>
+                                    </div>
+                                </div>
+                                <p>Stato del testo...</p>
+                            </div>
                         )
                     })}
                 </ul>
