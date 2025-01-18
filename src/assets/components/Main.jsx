@@ -1,46 +1,45 @@
 const articoli = [
-    "ciao",
-    "ciao2",
-    "ciao3"
-
 ]
-
 import { useState } from "react"
+
 
 const Main = () => {
 
-    const [title, setTitle] = useState()
+    const [title, setTitle] = useState(articoli)
+    const [newTitle, setNewTitle] = useState("")
 
     const handlerSubmit = (event) => {
         event.preventDefault()
-        setTitle([...articoli, title])
-        console.log(articoli);
+        const newTitleMaiuscolo = newTitle.charAt(0).toUpperCase() + newTitle.slice(1)
+        setTitle([newTitleMaiuscolo, ...title])
 
     }
-
     return (
         <div className="container my-5 border">
-            <form action="#">
+            <form action="#" onSubmit={handlerSubmit}>
                 <div className="inpit-group mb-3">
                     <input
                         className="form-controller mt-2 w-50 text-center"
                         placeholder="Inserire titolo articolo"
-                        value={title}
-                        onChange={(event) => setTitle(event.target.value)}
+                        value={newTitle}
+                        onChange={(event) => setNewTitle(event.target.value)}
                         type="text"
                     />
                     <button
                         className="mx-5 btn btn-outline-secondary"
                         type="submit"
-                    >Aggiungi</button>
+                        onClick={handlerSubmit}
+                    >Add
+                    </button>
                 </div>
             </form>
             <div>
+
                 <h3>Lista articoli</h3>
                 <ul>
-                    {articoli.map((articolo, index) => {
+                    {title.map((articolo, index) => {
                         return (
-                            <li key={index} className="border w-75">{articolo}</li>
+                            <li key={index} className="w-75 py-3"><h4>{articolo} </h4></li>
                         )
                     })}
                 </ul>
